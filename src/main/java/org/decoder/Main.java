@@ -29,8 +29,8 @@ public class Main {
     }
 
     public static void outputEncodedMessage() throws IOException {
-        String encodedMessage = "AVW ZLJYLA: Clyzpvu1 zbttly whyaf pzu'a mhy hdhf! nla aol zbujylht ylhkf!";
-        int shiftNum = 7;
+        String encodedMessage;
+        int shiftNum = 0;
         boolean validInput = false;
 
         System.out.println("Enter encoded message you wish you be translated");
