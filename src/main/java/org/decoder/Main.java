@@ -20,15 +20,15 @@ public class Main {
             controls = br.readLine();
             if (controls.equals("1")) {
                 flag = true;
-                outputEncodedMessage();
+                outputDecodedMessage();
             } else if (controls.equals("2")) {
                 flag = true;
-                // Insert Method for Encoding Message Here
+                outputEncodedMessage();
             }
         }
     }
 
-    public static void outputEncodedMessage() throws IOException {
+    public static void outputDecodedMessage() throws IOException {
         String encodedMessage;
         int shiftNum = 0;
         boolean validInput = false;
@@ -47,6 +47,28 @@ public class Main {
         }
 
         CaesarCipher cipher = new CaesarCipher();
-        System.out.printf("Output Message: %s", cipher.decodeMessage(encodedMessage, shiftNum));
+        System.out.printf("Output Decoded Message: %s", cipher.decodeMessage(encodedMessage, shiftNum));
+    }
+
+    public static void outputEncodedMessage() throws IOException {
+        String message;
+        int shiftNum = 0;
+        boolean validInput = false;
+
+        System.out.println("Enter the message you wish you be encoded");
+        message = br.readLine();
+
+        while (!validInput) {
+            try {
+                System.out.println("Enter the shift number you want to apply to the message");
+                shiftNum = Optional.of(Integer.parseInt(br.readLine())).orElse(0);
+                validInput = true;
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a integer here");
+            }
+        }
+
+        CaesarCipher cipher = new CaesarCipher();
+        System.out.printf("Output Encoded Message: %s", cipher.encodeMessage(message, shiftNum));
     }
 }
